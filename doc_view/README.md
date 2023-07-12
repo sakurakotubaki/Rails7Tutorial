@@ -1,6 +1,6 @@
 # README
 新しいWebページを追加する方法
-**コントローラーを作成する**
+## 🎮コントローラーを作成する
 
 ## 📗例
 ```
@@ -48,3 +48,28 @@ rails s
 ```
 
 http://127.0.0.1:3000/top
+
+## 🔧同じhomesディレクトリにページを追加する場合
+1. 先ほど作成したコントローラーに、urlにアクセスするためのアクションを追加
+```rb
+class HomesController < ApplicationController
+  # ここにアクションを記述していく
+  def top
+  end
+  # ２ページ目
+  def about
+  end
+end
+```
+
+2. ルートの追加をする
+```rb
+Rails.application.routes.draw do
+  get 'top' => 'homes#top'
+  # ２ページ目のルートを追加
+  get 'about' => 'homes#about'
+end
+```
+
+3. urlにアクセスして、Webページが表示されたら、OK!
+http://127.0.0.1:3000/about
